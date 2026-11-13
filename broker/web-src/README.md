@@ -1,0 +1,1 @@
+The plugin's source lives in `../../plugin/tools/copy-check`. At build time `hooks/build-static.js` copies it into the static bundle, so this folder only marks the app as having web assets. aio writes `src/config.json` (action URLs) here; it is not committed.

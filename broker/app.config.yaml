@@ -1,0 +1,42 @@
+# Copy Check broker on Adobe App Builder (I/O Runtime).
+# Secrets come from .env (see .env.example) and are injected as default action inputs.
+application:
+  # Static hosting for the plugin itself: https://{namespace}.adobeio-static.net/copy-check.html
+  web:
+    src: web-src
+    response-headers:
+      /*:
+        Cache-Control: no-cache
+      # The site's canvas imports agent.js (and its lib/ modules) cross-origin as a module.
+      /*.js:
+        Access-Control-Allow-Origin: '*'
+        Cache-Control: no-cache
+  hooks:
+    build-static: hooks/build-static.js
+  runtimeManifest:
+    packages:
+      copy-check:
+        license: Apache-2.0
+        actions:
+          api:
+            function: actions/api/index.js
+            runtime: nodejs:22
+            web: 'raw'
+            inputs:
+              LOG_LEVEL: info
+              ENCRYPTION_KEY: $COPYCHECK_ENCRYPTION_KEY
+              DA_ADMIN_URL: https://admin.da.live
+              # Provider hosts the broker may call. Add a self-hosted Sapling host here (data residency).
+              ALLOWED_ENDPOINT_HOSTS: api.sapling.ai
+              # Characters per site per month when the site config sets none, and a ceiling no site can exceed.
+              DEFAULT_MONTHLY_BUDGET: 5000000
+              MAX_MONTHLY_BUDGET: ''
+              USER_REQUESTS_PER_MINUTE: 30
+              USER_CHARS_PER_MINUTE: 60000
+            annotations:
+              require-adobe-auth: false
+              web-custom-options: true
+              final: true
+            limits:
+              timeout: 60000
+              memorySize: 256

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mock canvas</title>
+    <style>
+      body { margin: 0; padding: 12px 24px; font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      main > div { border-bottom: 1px dashed #ccc; padding-bottom: 8px; }
+      [data-block-index] { border: 1px solid #ddd; border-radius: 6px; margin: 8px 0; padding: 4px 8px; }
+      [data-block-index].qe-selected { outline: 2px solid #e35; }
+      [data-block-index]::before { content: attr(class); display: block; font-size: 11px; color: #888; }
+      img { max-width: 80px; height: 40px; background: #eee; }
+    </style>
+    <script type="module" src="./canvas.js"></script>
+  </head>
+  <body><main></main></body>
+</html>

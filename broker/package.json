@@ -1,0 +1,19 @@
+{
+  "name": "copy-check-broker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Copy Check broker: the trust boundary between the Experience Workspace plugin and Sapling.",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "deploy": "aio app deploy"
+  },
+  "dependencies": {
+    "@adobe/aio-lib-core-networking": "^5.1.0",
+    "@adobe/aio-lib-files": "^4.1.4",
+    "@adobe/aio-lib-state": "^5.4.0"
+  }
+}

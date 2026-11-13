@@ -1,0 +1,20 @@
+{
+  "name": "copy-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Copy Check: spelling, grammar and house style for Experience Workspace (da.live), with an App Builder broker.",
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:plugin && npm run test:broker",
+    "test:plugin": "node --test \"plugin/test/**/*.test.js\"",
+    "test:broker": "npm --prefix broker test",
+    "dev": "node dev/mock-server.mjs",
+    "dev:broker": "node dev/broker-server.mjs"
+  },
+  "devDependencies": {
+    "linkedom": "^0.18.12"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
